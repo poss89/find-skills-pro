@@ -48,22 +48,30 @@ See [`docs/security-model.md`](docs/security-model.md).
 
 ## Current validation
 
-The released v1.0.0 canonical `SKILL.md` was tested with:
+The v1.1.0 release-candidate canonical `SKILL.md` at commit
+`9bfaa7f61eafa601b22ef5f484add71791292c81` was freshly tested with:
 
 - NVIDIA SkillSpector `v2.12.0`
 - static profile: `--no-llm`
-- result: `7/100`
+- canonical SHA256: `ffbebdf563b5095596ff6f0142e8ce60d2c15b81c3d02a9e3943f6e5cadb3206`
+- score: `7/100`
 - severity: `LOW`
-- recommendation: `SAFE`
+- recommendation: `CAUTION`
 - coverage: `100%`
 - executable scripts: `No`
 
-One `EA2` finding remained and was reviewed as an acceptable false positive caused by provenance-verification wording. The skill still contains an explicit pre-approval read-only boundary and a mandatory human approval gate before any persistent change.
+One `EA2` finding remained and was manually accepted as a qualified false
+positive: it is triggered by provenance/current-source verification wording,
+while the canonical workflow separately enforces a pre-approval read-only
+boundary and mandatory human approval before persistent changes.
+
+SkillSpector also reported one `reference_missing` ledger exception caused by
+path-like metadata/reference wording; no bundled artifact is actually missing.
+With `--no-llm`, semantic analyzers are intentionally disabled. The inspected
+artifact still reported 100% coverage, one fully inspected file, zero partially
+or entirely uninspected files, and no executable scripts.
 
 Scanner output can vary across SkillSpector versions.
-
-The current Unreleased scanner-result hardening changes modify canonical
-`SKILL.md` bytes and therefore require a fresh scan before the next release.
 
 ## Skills CLI
 
@@ -87,7 +95,7 @@ The pin is intentional. Do not silently replace it with `latest`; re-audit befor
 | OpenCode | Adapter drafted | Native Agent Skills discovery; runtime validation pending |
 | TRAE | **Runtime validated** | IDE + Work routed correctly; scanner-result wording hardened in Unreleased |
 | Antigravity | **Runtime validated** | Global skill routed in Agent Manager; scanner-result wording hardened in Unreleased |
-| Gemini | **Retest pending** | First runtime test predicted/claimed scanner clearance without a real scan; canonical hardening added before retest |
+| Gemini | **Runtime validated (qualified)** | Hardened retests respected scanner/provenance gates; one non-blocking repository-level license factual caveat remained |
 
 See [`docs/host-support.md`](docs/host-support.md).
 

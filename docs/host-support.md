@@ -6,6 +6,7 @@ Find Skills Pro uses **one canonical root `SKILL.md`**. Host adapters document p
 
 - **Validated** — end-to-end host workflow has been exercised to the documented validation level.
 - **Runtime validated** — the skill was loaded/discovered, routed naturally, and respected the persistent-action boundary; this does not imply SkillSpector is available on that host.
+- **Runtime validated (qualified)** — runtime governance acceptance passed, with a documented non-blocking factual caveat that does not bypass the workflow gates.
 - **Retest pending** — the host loaded the skill, but a governance/runtime acceptance condition failed and must be retested after a canonical fix.
 - **Adapter drafted** — official host mechanics are documented, but the exact Find Skills Pro package still needs runtime validation in that host.
 
@@ -21,7 +22,7 @@ Find Skills Pro uses **one canonical root `SKILL.md`**. Host adapters document p
 | OpenCode | Adapter drafted | `~/.config/opencode/skills/` global or `.opencode/skills/` project; also reads `.claude/skills` and `.agents/skills` | Local CLI |
 | TRAE | **Runtime validated** | Personal/local skill layer in tested IDE + Work environment | If scanner is unavailable, report `NOT_RUN / UNAVAILABLE`; never predict a result |
 | Antigravity | **Runtime validated** | `~/.gemini/config/skills/` global in tested environment | If scanner is unavailable, manual review remains explicitly non-equivalent |
-| Gemini Apps | **Retest pending** | Uploaded Gemini Skill | First runtime test fabricated/predicted clearance semantics; retest only after canonical hardening |
+| Gemini Apps | **Runtime validated (qualified)** | Uploaded Gemini Skill | Hardened retests respected `NOT_RUN / UNAVAILABLE`, manual-review separation, `GATE PENDING`, and provenance identity rules; one non-blocking repository-license factual caveat documented |
 
 ## Codex
 
@@ -65,7 +66,7 @@ OpenCode supports per-skill permissions (`allow`, `deny`, `ask`). Find Skills Pr
 
 The target environment already uses personal/local Skills and shares local skill behavior across TRAE Code / Work in the current stack.
 
-Find Skills Pro was installed and runtime-tested in both TRAE IDE and TRAE Work. Both respected the stop-before-persistent-action boundary. The IDE test used overly optimistic predicted scanner wording; the Unreleased canonical hardening explicitly forbids that wording.
+Find Skills Pro was installed and runtime-tested in both TRAE IDE and TRAE Work. Both respected the stop-before-persistent-action boundary. The IDE test used overly optimistic predicted scanner wording; the v1.1.0 canonical hardening explicitly forbids that wording.
 
 ## Antigravity
 
@@ -80,7 +81,20 @@ Find Skills Pro is generic, so global scope is preferred when the token budget p
 
 Gemini Apps now supports reusable Skills for personal Google Accounts, with automatic relevance-based use and explicit invocation.
 
-The Gemini Apps product is not the same runtime as Antigravity. Do not assume filesystem or local CLI capabilities. The first uploaded-skill runtime test failed governance acceptance because it predicted a SkillSpector score, called the candidate security-cleared without a real scan, and issued an approval-oriented INSTALL verdict. Gemini remains retest-pending until the hardened canonical skill is uploaded and passes the same runtime test.
+The Gemini Apps product is not the same runtime as Antigravity. Do not assume filesystem or local CLI capabilities. The first uploaded-skill runtime test failed governance acceptance because it predicted a SkillSpector score, called the candidate security-cleared without a real scan, and issued an approval-oriented INSTALL verdict.
+
+After canonical hardening, repeated retests correctly reported `NOT_RUN /
+UNAVAILABLE`, kept `MANUAL STATIC REVIEW ONLY` separate from scanner clearance,
+used `INSTALL — GATE PENDING`, preserved the stop-before-persistent-action
+boundary, separated declared skill identity from the CLI selector, and reported
+the exact declared MIT license and 70-rule count.
+
+The final retest still made one non-blocking factual mistake by claiming the
+MIT license was also present in a repository-root `LICENSE` file. The upstream
+root has no such file. Because the canonical workflow already explicitly
+separates skill-level declared metadata from repository-level license-file
+presence and no governance gate was bypassed, Gemini is recorded as **Runtime
+validated (qualified)** rather than retest-pending.
 
 ## Validation rule
 

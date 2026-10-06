@@ -1,6 +1,6 @@
 # Gemini Apps Adapter
 
-**Status: retest pending — first runtime acceptance failed scanner-result semantics**
+**Status: runtime validated (qualified) — 2026-10-07**
 
 Gemini Apps now supports reusable Skills on eligible personal Google Accounts. Skills can be automatically applied when relevant or explicitly invoked.
 
@@ -20,7 +20,10 @@ If the scanner cannot run, the adapter must:
 - never call a manual review `PASS` or security clearance;
 - never present `INSTALL / REPLACE` as approval-ready while the gate is pending.
 
-The first Gemini Apps runtime test violated these semantics, so the adapter remains retest-pending until the hardened canonical skill passes a fresh test.
+The first Gemini Apps runtime test violated these semantics. Hardened retests
+then correctly reported scanner unavailability, kept manual static review
+non-equivalent to SkillSpector clearance, used `INSTALL — GATE PENDING`, and
+stopped before persistent action.
 
 ## Provenance and command integrity
 
@@ -46,6 +49,20 @@ capability count, report the exact value rather than an approximation such as
 
 Do not present CLI flags or options unless they were verified for the exact
 pinned tool/version.
+
+## Runtime validation note
+
+The final governance retest correctly separated
+`vercel-react-best-practices` from the `react-best-practices` CLI selector,
+reported declared license `MIT`, exact rule count `70`, and preserved
+`NOT_RUN / UNAVAILABLE` plus `MANUAL STATIC REVIEW ONLY` and
+`INSTALL — GATE PENDING`.
+
+One non-blocking factual caveat remained: the runtime also claimed the MIT
+license was present in a repository-root `LICENSE` file, while the upstream
+repository root has no such file. This did not bypass any governance or
+persistent-action gate, and the canonical workflow already explicitly requires
+repository-level license-file absence to be reported separately.
 
 Official references:
 - https://support.google.com/gemini/answer/17094296

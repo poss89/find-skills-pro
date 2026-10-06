@@ -2,7 +2,7 @@
 
 All notable changes to Find Skills Pro will be documented here.
 
-## Unreleased
+## 1.1.0 — 2026-10-07
 
 ### Changed
 
@@ -17,9 +17,25 @@ All notable changes to Find Skills Pro will be documented here.
 - blocked approval-ready `INSTALL/REPLACE` recommendations while a mandatory
   SkillSpector gate is pending;
 - runtime-tested Codex, ChatGPT, Claude, TRAE IDE/Work, and Antigravity;
-- recorded Gemini Apps as retest-pending after its first runtime test violated
-  scanner-result semantics.
+- hardened current-source provenance semantics for declared identity, license,
+  version, exact capability counts, and pinned CLI command integrity;
+- runtime-tested Gemini Apps after hardening; the final governance retest passed
+  with one documented non-blocking repository-level license factual caveat.
 
+### Security validation
+
+Release-candidate canonical `SKILL.md` at commit
+`9bfaa7f61eafa601b22ef5f484add71791292c81` tested with NVIDIA SkillSpector
+v2.12.0 using `--no-llm`:
+
+- SHA256: `ffbebdf563b5095596ff6f0142e8ce60d2c15b81c3d02a9e3943f6e5cadb3206`;
+- score: 7/100;
+- severity: LOW;
+- recommendation: CAUTION;
+- coverage: 100%;
+- executable scripts: none;
+- one EA2 finding manually accepted as a qualified false positive;
+- one `reference_missing` ledger exception reviewed as non-material.
 
 ## 1.0.0 — 2026-10-06
 
