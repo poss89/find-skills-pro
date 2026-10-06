@@ -34,6 +34,16 @@ exact value as the canonical declared skill identity. Repository directory
 names, registry aliases/slugs, package names, and CLI `--skill` selectors are
 separate identifiers and must be labeled separately when they differ.
 
+When the exact candidate `SKILL.md` explicitly declares `license:` or other
+frontmatter metadata, report it as the candidate's declared metadata. A missing
+repository-level `LICENSE` file is a separate repository fact and does not by
+itself make the declared skill license `UNKNOWN / CONFLICTING`.
+
+Use `UNKNOWN / CONFLICTING` only when primary-upstream evidence itself is
+missing or contradictory. When primary upstream declares an exact rule or
+capability count, report the exact value rather than an approximation such as
+`70+`.
+
 Do not present CLI flags or options unless they were verified for the exact
 pinned tool/version.
 

@@ -136,6 +136,21 @@ frontmatter `name:` value.
 When reporting identity, label these fields separately when they differ, for
 example `Declared skill identity:` and `Repository directory / CLI selector:`.
 
+When the exact candidate `SKILL.md` explicitly declares metadata such as
+`name:`, `license:`, or `metadata.version`, report that value as the candidate's
+declared metadata.
+
+The absence of a repository-level `LICENSE` file does not by itself make an
+explicit skill-level license `UNKNOWN / CONFLICTING`. Report repository-level
+license-file absence separately when relevant.
+
+Use `UNKNOWN / CONFLICTING` only when primary-upstream evidence itself is
+missing or contradictory, not merely because a secondary source differs or a
+repository-level license file is absent.
+
+When the primary upstream declares an exact rule/capability count, report the
+exact value rather than an approximate form such as `70+`.
+
 If the primary upstream does not resolve a conflict, report the field as
 `UNKNOWN / CONFLICTING` and preserve that uncertainty in the recommendation.
 
