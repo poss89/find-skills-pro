@@ -1,6 +1,6 @@
 # Codex Adapter
 
-**Status: adapter drafted — runtime validation pending**
+**Status: runtime validated — 2026-10-06**
 
 ## Goal
 

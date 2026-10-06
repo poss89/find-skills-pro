@@ -10,7 +10,15 @@ All notable changes to Find Skills Pro will be documented here.
 - split Claude and Claude Code into separate host adapters;
 - added an OpenCode adapter;
 - refreshed the host-support matrix against current official host documentation;
-- kept the root `SKILL.md` as the single canonical workflow source.
+- kept the root `SKILL.md` as the single canonical workflow source;
+- hardened scanner-result semantics: no predicted SkillSpector scores/verdicts,
+  no manual-review `PASS/SAFE` substitution, and explicit
+  `NOT_RUN / UNAVAILABLE` states;
+- blocked approval-ready `INSTALL/REPLACE` recommendations while a mandatory
+  SkillSpector gate is pending;
+- runtime-tested Codex, ChatGPT, Claude, TRAE IDE/Work, and Antigravity;
+- recorded Gemini Apps as retest-pending after its first runtime test violated
+  scanner-result semantics.
 
 
 ## 1.0.0 — 2026-10-06

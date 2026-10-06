@@ -38,13 +38,17 @@ A candidate is discovered and materialized temporarily, scanned, and then return
 
 A SkillSpector `SAFE` result **never** means “install automatically.”
 
+If SkillSpector did not actually run, Find Skills Pro must say
+`NOT_RUN / UNAVAILABLE`; manual static review must not be reported as
+`PASS`, `SAFE`, or a predicted scanner score.
+
 Installation or any other persistent skill-state change requires explicit user approval for the exact candidate and exact action.
 
 See [`docs/security-model.md`](docs/security-model.md).
 
 ## Current validation
 
-The canonical `SKILL.md` was tested with:
+The released v1.0.0 canonical `SKILL.md` was tested with:
 
 - NVIDIA SkillSpector `v2.12.0`
 - static profile: `--no-llm`
@@ -57,6 +61,9 @@ The canonical `SKILL.md` was tested with:
 One `EA2` finding remained and was reviewed as an acceptable false positive caused by provenance-verification wording. The skill still contains an explicit pre-approval read-only boundary and a mandatory human approval gate before any persistent change.
 
 Scanner output can vary across SkillSpector versions.
+
+The current Unreleased scanner-result hardening changes modify canonical
+`SKILL.md` bytes and therefore require a fresh scan before the next release.
 
 ## Skills CLI
 
@@ -73,14 +80,14 @@ The pin is intentional. Do not silently replace it with `latest`; re-audit befor
 | Host | Status | Notes |
 |---|---|---|
 | Replit | **Validated** | Private/User workflow tested |
-| Codex | Adapter drafted | Runtime validation pending |
-| ChatGPT | Adapter drafted | Runtime validation pending; product availability can vary |
-| Claude | Adapter drafted | ZIP/custom-skill flow; runtime validation pending |
+| Codex | **Runtime validated** | Global skill discovered and routed; approval boundary respected |
+| ChatGPT | **Runtime validated** | Uploaded skill routed correctly; scanner absence was not fabricated |
+| Claude | **Runtime validated** | Uploaded ZIP routed correctly; manual review kept distinct from SkillSpector |
 | Claude Code | Adapter drafted | Personal/project filesystem skill flow |
 | OpenCode | Adapter drafted | Native Agent Skills discovery; runtime validation pending |
-| TRAE | Adapter drafted | User environment already uses local skills; final runtime validation pending |
-| Antigravity | Adapter drafted | Global/project scopes documented; token budget still matters |
-| Gemini | Adapter drafted | Gemini Apps skills are current; exact install/scan path still needs runtime validation |
+| TRAE | **Runtime validated** | IDE + Work routed correctly; scanner-result wording hardened in Unreleased |
+| Antigravity | **Runtime validated** | Global skill routed in Agent Manager; scanner-result wording hardened in Unreleased |
+| Gemini | **Retest pending** | First runtime test predicted/claimed scanner clearance without a real scan; canonical hardening added before retest |
 
 See [`docs/host-support.md`](docs/host-support.md).
 

@@ -1,6 +1,6 @@
 # Claude Adapter
 
-**Status: adapter drafted — runtime validation pending**
+**Status: runtime validated — 2026-10-06**
 
 ## Packaging
 
@@ -10,7 +10,7 @@ Package the canonical root `SKILL.md` as the skill payload. Do not fork the gove
 
 ## SkillSpector boundary
 
-Claude Skills have a code-execution environment, but Find Skills Pro must first verify that NVIDIA SkillSpector is actually available or can be used safely in that environment. If not, require an external pre-scan rather than fabricating a security pass.
+Claude Skills have a code-execution environment, but Find Skills Pro must first verify that NVIDIA SkillSpector is actually available or can be used safely in that environment. If not, report `NOT_RUN / UNAVAILABLE` and require an external pre-scan rather than fabricating, predicting, or substituting a manual security pass.
 
 ## Scope
 

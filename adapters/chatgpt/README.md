@@ -1,6 +1,6 @@
 # ChatGPT Adapter
 
-**Status: adapter drafted — runtime validation pending**
+**Status: runtime validated — 2026-10-06**
 
 ## Goal
 
@@ -12,7 +12,7 @@ OpenAI documents creating/uploading Skills from the Skills UI and also supports 
 
 Do **not** assume that every ChatGPT surface can execute a local `skillspector` binary.
 
-If NVIDIA SkillSpector is unavailable in the active execution environment, Find Skills Pro must not pretend the external security gate ran. Require an external/pre-install scan or stop before an `INSTALL` recommendation that depends on the missing gate.
+If NVIDIA SkillSpector is unavailable in the active execution environment, Find Skills Pro must report `SkillSpector: NOT_RUN / UNAVAILABLE`. Manual static review must not be called `PASS`, `SAFE`, or security clearance, and the runtime must not predict an expected scanner score. Require an external/pre-install scan or stop before an approval-ready `INSTALL / REPLACE`.
 
 ## Validation checklist
 

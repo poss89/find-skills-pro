@@ -1,6 +1,6 @@
 # TRAE Adapter
 
-**Status: adapter drafted — runtime validation pending**
+**Status: runtime validated — TRAE IDE + TRAE Work, 2026-10-06**
 
 The target stack already uses a personal/local skill layer across TRAE Code / Work.
 
@@ -19,7 +19,7 @@ Verify on the actual target installation:
 - local SkillSpector availability;
 - post-install verification.
 
-Do not mark this adapter validated based only on marketplace documentation or behavior of other hosts.
+The tested IDE and Work runtimes both routed Find Skills Pro and stopped before persistent action. One IDE run predicted an expected SkillSpector result while the scanner was unavailable; the canonical workflow now forbids predicted scanner scores/verdicts and requires `NOT_RUN / UNAVAILABLE` instead.
 
 Official product context:
 - https://www.trae.ai/

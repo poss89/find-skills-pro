@@ -166,6 +166,33 @@ Treat the report as security evidence, not as the sole product-quality decision:
 If the candidate cannot be inspected adequately, do not recommend it as ready
 for installation.
 
+### Scanner-Result Integrity
+
+SkillSpector evidence must describe what actually ran against the exact candidate
+artifact. Never predict or fabricate a scanner result.
+
+If SkillSpector has not actually run:
+
+- report `SkillSpector: NOT_RUN`, or `SkillSpector: UNAVAILABLE` when that is
+  the reason;
+- label any fallback inspection as `MANUAL STATIC REVIEW ONLY`;
+- do not predict a score, severity, recommendation, or verdict such as
+  "expected 0/100", "likely SAFE", or equivalent;
+- do not call a manual review `PASS`, `SAFE`, `security-cleared`, or use
+  wording that can be confused with a SkillSpector result;
+- do not infer a scanner verdict merely because the artifact appears to contain
+  only Markdown or other non-executable files.
+
+Manual static review can surface risks, but it does not satisfy the external
+SkillSpector gate.
+
+If a candidate is otherwise strong enough to merit installation or replacement
+but the required external gate has not run, describe it only as
+`INSTALL — GATE PENDING` or `REPLACE — GATE PENDING`. It is not ready for
+approval or installation. Stop before Step 8 until the exact artifact has a real
+SkillSpector result or a verified external pre-install scan that satisfies the
+same gate.
+
 ## Step 4 — Behavioral / Security Review
 
 Inspect the candidate's actual instructions and bundled artifacts.
@@ -237,12 +264,17 @@ For `INSTALL` or `REPLACE`, present at minimum:
 - candidate and source;
 - what it uniquely adds;
 - freshness/provenance result;
-- SkillSpector result;
+- the actual SkillSpector result, or an explicit `NOT_RUN / UNAVAILABLE`
+  status;
 - material behavioral/security findings;
 - overlap conclusion;
 - recommended host/scope;
 - routing boundary;
 - exact proposed installation or replacement action.
+
+When SkillSpector is required but still `NOT_RUN / UNAVAILABLE`, the
+recommendation must carry `GATE PENDING` and must not be presented as safe,
+cleared, approval-ready, or installation-ready.
 
 ## Step 8 — Mandatory Human Approval Gate
 
@@ -250,6 +282,10 @@ This is a hard boundary.
 
 Before any installation, update, replacement, deletion, enable/disable action,
 or other persistent mutation, present the recommendation and **STOP AND WAIT**.
+
+Do not request Step 8 installation/replacement approval while a mandatory
+SkillSpector gate is still `NOT_RUN / UNAVAILABLE`. Resolve or externally
+satisfy that gate first.
 
 Proceed only after explicit user approval for the specific candidate and the
 specific proposed action.
