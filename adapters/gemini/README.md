@@ -29,7 +29,10 @@ or secondary-source claims. It must not merge conflicting license, identity,
 version, or capability-count claims. If primary upstream cannot resolve a
 conflict, report `UNKNOWN / CONFLICTING`.
 
-Registry aliases must remain distinct from the skill's declared name.
+When upstream `SKILL.md` frontmatter contains `name:`, Gemini must report that
+exact value as the canonical declared skill identity. Repository directory
+names, registry aliases/slugs, package names, and CLI `--skill` selectors are
+separate identifiers and must be labeled separately when they differ.
 
 Do not present CLI flags or options unless they were verified for the exact
 pinned tool/version.

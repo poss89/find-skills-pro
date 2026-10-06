@@ -125,9 +125,16 @@ For identity, license, version, declared rule/capability counts, and other
 metadata, read and report the exact current upstream metadata before asserting
 a value. Do not merge incompatible claims such as `Apache-2.0 / MIT`.
 
-Registry names or CLI selectors do not replace the skill's declared identity.
-Distinguish the exact declared skill name from registry aliases or installation
-selectors.
+When a `SKILL.md` frontmatter contains `name:`, that exact value is the canonical
+declared skill identity.
+
+A repository directory name, registry slug or alias, package name, or CLI
+`--skill` selector is a separate identifier. It must never replace, be labeled
+as, or be presented as the declared skill name unless it exactly matches the
+frontmatter `name:` value.
+
+When reporting identity, label these fields separately when they differ, for
+example `Declared skill identity:` and `Repository directory / CLI selector:`.
 
 If the primary upstream does not resolve a conflict, report the field as
 `UNKNOWN / CONFLICTING` and preserve that uncertainty in the recommendation.
