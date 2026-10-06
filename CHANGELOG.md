@@ -2,6 +2,17 @@
 
 All notable changes to Find Skills Pro will be documented here.
 
+## Unreleased
+
+### Changed
+
+- split Codex and ChatGPT into separate host adapters;
+- split Claude and Claude Code into separate host adapters;
+- added an OpenCode adapter;
+- refreshed the host-support matrix against current official host documentation;
+- kept the root `SKILL.md` as the single canonical workflow source.
+
+
 ## 1.0.0 — 2026-10-06
 
 Initial public release.

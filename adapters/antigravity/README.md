@@ -1,5 +1,26 @@
 # Antigravity Adapter
 
-**Status: planned — not yet validated**
+**Status: adapter drafted — runtime validation pending**
 
-Any persistent adapter must respect Antigravity's token budget. Prefer a lean wrapper around the canonical workflow and move heavy or infrequent behavior on-demand where practical.
+Google documents two primary Skill scopes:
+
+Global:
+
+```text
+~/.gemini/config/skills/find-skills-pro/SKILL.md
+```
+
+Project/workspace:
+
+```text
+<project-root>/.agents/skills/find-skills-pro/SKILL.md
+```
+
+Find Skills Pro is generic, so global scope is preferred when the host token budget permits it.
+
+## Token-budget rule
+
+Antigravity may exclude skills/tools when the resident context budget is exceeded. Keep this adapter lean and avoid bundling redundant documentation into the active skill package.
+
+Official reference:
+- https://codelabs.developers.google.com/getting-started-with-antigravity-skills

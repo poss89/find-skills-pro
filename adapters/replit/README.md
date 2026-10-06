@@ -2,14 +2,16 @@
 
 **Status: validated**
 
-Use the repository root `SKILL.md` as a Replit **Private/User** skill for cross-project reuse.
+Use the canonical root `SKILL.md` as a Replit **Private/User** skill for cross-project reuse.
 
-Recommended flow:
+Validated governance:
 
-1. upload/package the canonical `SKILL.md`;
-2. keep the skill in Private/User scope;
-3. avoid a duplicate Project copy unless a project-specific fork is intentionally required;
-4. verify the installed copy and routing behavior;
-5. use NVIDIA SkillSpector against exact candidate artifacts discovered by Find Skills Pro.
+- discovery and provenance checks;
+- NVIDIA SkillSpector candidate gate;
+- overlap and host/scope routing review;
+- explicit approval before persistent skill changes;
+- post-install verification.
 
-Do not treat stale filesystem folders as authoritative when the Replit UI reports a different active Private/User state.
+The canonical Private/User capability is preferred over a duplicate Project copy for this generic cross-project workflow.
+
+Replit-specific note: the Customization UI is the canonical source for active Private/User skills when stale/orphan folders remain under `.local/custom_skills`.

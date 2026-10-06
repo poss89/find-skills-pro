@@ -72,12 +72,15 @@ The pin is intentional. Do not silently replace it with `latest`; re-audit befor
 
 | Host | Status | Notes |
 |---|---|---|
-| Replit | **Validated** | Private/User skill workflow tested |
-| Codex / ChatGPT | Planned port | Host adapter still to be validated |
-| Claude | Planned port | Host adapter still to be validated |
-| TRAE | Planned port | Host adapter still to be validated |
-| Antigravity | Planned port | Must account for token budget |
-| Gemini | Planned port | Must match actual host capabilities |
+| Replit | **Validated** | Private/User workflow tested |
+| Codex | Adapter drafted | Runtime validation pending |
+| ChatGPT | Adapter drafted | Runtime validation pending; product availability can vary |
+| Claude | Adapter drafted | ZIP/custom-skill flow; runtime validation pending |
+| Claude Code | Adapter drafted | Personal/project filesystem skill flow |
+| OpenCode | Adapter drafted | Native Agent Skills discovery; runtime validation pending |
+| TRAE | Adapter drafted | User environment already uses local skills; final runtime validation pending |
+| Antigravity | Adapter drafted | Global/project scopes documented; token budget still matters |
+| Gemini | Adapter drafted | Gemini Apps skills are current; exact install/scan path still needs runtime validation |
 
 See [`docs/host-support.md`](docs/host-support.md).
 
@@ -97,8 +100,11 @@ See [`docs/host-support.md`](docs/host-support.md).
 │   └── host-support.md
 └── adapters/
     ├── replit/
-    ├── codex-chatgpt/
+    ├── codex/
+    ├── chatgpt/
     ├── claude/
+    ├── claude-code/
+    ├── opencode/
     ├── trae/
     ├── antigravity/
     └── gemini/
