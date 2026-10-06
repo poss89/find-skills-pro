@@ -22,6 +22,18 @@ If the scanner cannot run, the adapter must:
 
 The first Gemini Apps runtime test violated these semantics, so the adapter remains retest-pending until the hardened canonical skill passes a fresh test.
 
+## Provenance and command integrity
+
+Gemini must prefer exact primary-upstream metadata over registry, mirror, cached,
+or secondary-source claims. It must not merge conflicting license, identity,
+version, or capability-count claims. If primary upstream cannot resolve a
+conflict, report `UNKNOWN / CONFLICTING`.
+
+Registry aliases must remain distinct from the skill's declared name.
+
+Do not present CLI flags or options unless they were verified for the exact
+pinned tool/version.
+
 Official references:
 - https://support.google.com/gemini/answer/17094296
 - https://support.google.com/gemini/answer/18560919

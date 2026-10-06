@@ -81,6 +81,10 @@ npx skills@1.7.0 add vercel-labs/agent-skills --skill react-best-practices
 Installation commands shown to the user are proposals until the explicit
 approval gate below is satisfied.
 
+Do not invent, infer, or recommend CLI flags/options unless they have been
+verified for the exact pinned tool/version. If exact syntax is not verified,
+state that clearly and omit the unverified command or option.
+
 ## Step 1 — Discovery
 
 Understand the requested capability first:
@@ -111,6 +115,22 @@ For each serious candidate, establish:
 - whether the copy being reviewed is the same source intended for installation.
 
 Prefer primary upstream sources.
+
+### Current-Source Conflict Rule
+
+When current-source facts conflict across registries, mirrors, cached results,
+or upstream files, the primary upstream source wins.
+
+For identity, license, version, declared rule/capability counts, and other
+metadata, read and report the exact current upstream metadata before asserting
+a value. Do not merge incompatible claims such as `Apache-2.0 / MIT`.
+
+Registry names or CLI selectors do not replace the skill's declared identity.
+Distinguish the exact declared skill name from registry aliases or installation
+selectors.
+
+If the primary upstream does not resolve a conflict, report the field as
+`UNKNOWN / CONFLICTING` and preserve that uncertainty in the recommendation.
 
 Do not treat a registry summary, stale local copy, fork, mirror, or cached result
 as equivalent to the current intended installation source without checking.
